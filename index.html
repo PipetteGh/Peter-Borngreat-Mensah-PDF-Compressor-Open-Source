@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borngreat PDF Compressor - Compress PDF online with maximal quality</title>
+  <meta name="description" content="Compress PDF files online for free with Borngreat PDF Compressor. Reduce file size while optimizing for maximal PDF quality. 100% private, client-side, and instant." />
+  <meta name="keywords" content="Compress PDF, PDF compressor, Borngreat PDF, reduce PDF size, optimize PDF, free PDF compression, online PDF tool" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <!-- Google Fonts: Outfit & Inter for high-end aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+<body class="theme-light">
+  <!-- Application Container -->
+  <div class="app-layout">
+    
+    <!-- Top Navigation Bar -->
+    <header class="app-header">
+      <nav class="nav-container">
+        <div class="nav-left">
+          <a href="#" class="brand-logo" id="brandLogo">
+            <span class="brand-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="12" y1="18" x2="12" y2="12"></line>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+              </svg>
+            </span>
+            <span class="brand-name">Borngreat <span class="brand-highlight">PDF</span></span>
+          </a>
+
+          <ul class="nav-menu">
+            <li><a href="#" class="nav-item active">Compress PDF</a></li>
+            <li><a href="#features" class="nav-item">Features</a></li>
+            <li><a href="#how-it-works" class="nav-item">How it works</a></li>
+            <li><a href="#faq" class="nav-item">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="nav-right">
+          <button id="btnSamplePdfTop" class="btn-ghost-sm" title="Test with a built-in sample document">
+            <i data-lucide="file-sparkles"></i>
+            <span>Try Demo PDF</span>
+          </button>
+          <div class="privacy-badge tooltip-wrap">
+            <i data-lucide="shield-check"></i>
+            <span>100% In-Browser Privacy</span>
+            <div class="tooltip-popup">Files are processed entirely on your device. Zero bytes uploaded to any remote server.</div>
+          </div>
+          <!-- Mobile Menu Hamburger Button -->
+          <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-lucide="menu" id="menuOpenIcon"></i>
+            <i data-lucide="x" id="menuCloseIcon" style="display: none;"></i>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobileNavDrawer" class="mobile-nav-drawer">
+        <div class="mobile-nav-content">
+          <ul class="mobile-nav-menu">
+            <li><a href="#" class="mobile-nav-item active" id="mobileNavCompress"><i data-lucide="file-down"></i><span>Compress PDF</span></a></li>
+            <li><a href="#how-it-works" class="mobile-nav-item"><i data-lucide="info"></i><span>How it works</span></a></li>
+            <li><a href="#features" class="mobile-nav-item"><i data-lucide="sparkles"></i><span>Features</span></a></li>
+            <li><a href="#faq" class="mobile-nav-item"><i data-lucide="help-circle"></i><span>FAQ</span></a></li>
+          </ul>
+
+          <div class="mobile-nav-footer">
+            <button id="btnSamplePdfMobile" class="btn-mobile-demo">
+              <i data-lucide="file-sparkles"></i>
+              <span>Try Demo PDF</span>
+            </button>
+            <div class="mobile-privacy-pill">
+              <i data-lucide="shield-check"></i>
+              <span>100% In-Browser Privacy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Tool Container -->
+    <main class="main-content">
+
+      <!-- ============================================== -->
+      <!-- VIEW 1: HERO & UPLOAD DROP AREA (Empty State)  -->
+      <!-- ============================================== -->
+      <section id="uploadView" class="tool-view active">
+        <div class="hero-header">
+          <div class="hero-badge">
+            <i data-lucide="zap"></i>
+            <span>Fast, Free & Unlimited PDF Compressor</span>
+          </div>
+          <h1 class="hero-title">Compress PDF files</h1>
+          <h2 class="hero-subtitle">Reduce file size while optimizing for maximal PDF quality.</h2>
+        </div>
+
+        <!-- Big Drag & Drop Zone -->
+        <div id="dropZone" class="uploader-box">
+          <input type="file" id="fileInput" accept=".pdf,application/pdf" multiple style="display: none;" />
+
+          <div class="uploader-action-center">
+            <button id="btnSelectFiles" class="btn-uploader" type="button">
+              <span class="btn-uploader-icon">
+                <i data-lucide="plus"></i>
+              </span>
+              <span class="btn-uploader-text">Select PDF files</span>
+            </button>
+
+            <!-- Extra Upload Sources / Demo -->
+            <div class="uploader-extra-options">
+              <button id="btnDeviceUpload" class="extra-btn" title="Choose from your Computer">
+                <i data-lucide="laptop"></i>
+                <span>From Computer</span>
+              </button>
+              <button id="btnSamplePdf" class="extra-btn highlight" title="Instantly generate & load a rich sample PDF">
+                <i data-lucide="sparkles"></i>
+                <span>Try Sample PDF</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="uploader-droptxt">
+            <i data-lucide="arrow-down-to-line"></i>
+            <span>or drop PDFs here</span>
+          </div>
+
+          <!-- Trust & Value Badges -->
+          <div class="uploader-footer-perks">
+            <div class="perk-item">
+              <i data-lucide="lock"></i>
+              <span>Zero server upload</span>
+            </div>
+            <div class="perk-item">
+              <i data-lucide="gauge"></i>
+              <span>Instant WebAssembly</span>
+            </div>
+            <div class="perk-item">
+              <i data-lucide="sparkles"></i>
+              <span>Up to 90% size reduction</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 2: WORKSPACE & OPTIONS (Files Uploaded)    -->
+      <!-- ============================================== -->
+      <section id="workspaceView" class="tool-view">
+        <div class="workspace-grid">
+          
+          <!-- Left: Files Preview Grid -->
+          <div class="workspace-main">
+            <div class="workspace-header">
+              <div class="workspace-header-title">
+                <h3>Uploaded Files</h3>
+                <span id="fileCountBadge" class="counter-badge">1 file</span>
+              </div>
+              <div class="workspace-actions">
+                <button id="btnAddMoreFiles" class="btn-secondary-sm" title="Add more PDF files">
+                  <i data-lucide="plus"></i>
+                  <span>Add more files</span>
+                </button>
+                <button id="btnClearAll" class="btn-text-sm" title="Remove all files">
+                  <i data-lucide="trash-2"></i>
+                  <span>Clear all</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Cards Container -->
+            <div id="fileCardsGrid" class="cards-grid">
+              <!-- Dynamically populated via JS -->
+            </div>
+          </div>
+
+          <!-- Right: Compression Settings Sidebar -->
+          <aside class="workspace-sidebar">
+            <div class="sidebar-card">
+              <div class="sidebar-header">
+                <div class="sidebar-title-wrap">
+                  <i data-lucide="sliders"></i>
+                  <h4>Compression level</h4>
+                </div>
+              </div>
+
+              <!-- 3 Level Selection Options (iLovePDF Style) -->
+              <div class="compression-levels" id="compressionLevels">
+                <!-- Extreme -->
+                <div class="level-card" data-level="extreme">
+                  <div class="level-card-radio">
+                    <span class="radio-dot"></span>
+                  </div>
+                  <div class="level-card-info">
+                    <div class="level-title-row">
+                      <span class="level-name">Extreme Compression</span>
+                    </div>
+                    <p class="level-summary">Less quality, high compression</p>
+                    <span class="level-desc">Ideal for strict upload portals and email attachments (&lt; 1 MB).</span>
+                  </div>
+                </div>
+
+                <!-- Recommended (Default Active) -->
+                <div class="level-card active" data-level="recommended">
+                  <div class="level-card-radio">
+                    <span class="radio-dot"></span>
+                  </div>
+                  <div class="level-card-info">
+                    <div class="level-title-row">
+                      <span class="level-name">Recommended Compression</span>
+                      <span class="recommended-tag">Recommended</span>
+                    </div>
+                    <p class="level-summary">Good quality, good compression</p>
+                    <span class="level-desc">Perfect balance between crisp text, images, and smaller file size.</span>
+                  </div>
+                </div>
+
+                <!-- Low -->
+                <div class="level-card" data-level="low">
+                  <div class="level-card-radio">
+                    <span class="radio-dot"></span>
+                  </div>
+                  <div class="level-card-info">
+                    <div class="level-title-row">
+                      <span class="level-name">Less compression</span>
+                    </div>
+                    <p class="level-summary">High quality, less compression</p>
+                    <span class="level-desc">Retains high DPI textures for visual documents and printing.</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Collapsible Advanced Features -->
+              <details class="advanced-accordion">
+                <summary class="advanced-summary">
+                  <span>Advanced Optimization Options</span>
+                  <i data-lucide="chevron-down"></i>
+                </summary>
+
+                <div class="advanced-content">
+                  <!-- Target File Size Switch -->
+                  <div class="setting-row">
+                    <label class="toggle-control">
+                      <input type="checkbox" id="chkTargetSize" />
+                      <span class="toggle-slider"></span>
+                      <span class="setting-label">Target file size limit</span>
+                    </label>
+                  </div>
+
+                  <div id="targetSizeControls" class="sub-setting-box" style="display: none;">
+                    <div class="target-presets">
+                      <button type="button" class="preset-chip" data-kb="300">Under 300 KB</button>
+                      <button type="button" class="preset-chip active" data-kb="500">Under 500 KB</button>
+                      <button type="button" class="preset-chip" data-kb="1000">Under 1 MB</button>
+                      <button type="button" class="preset-chip" data-kb="2000">Under 2 MB</button>
+                    </div>
+                    <div class="custom-input-wrap">
+                      <label for="customTargetKb">Max Size (KB):</label>
+                      <input type="number" id="customTargetKb" value="500" min="50" max="50000" step="50" />
+                    </div>
+                  </div>
+
+                  <!-- Grayscale conversion -->
+                  <div class="setting-row">
+                    <label class="toggle-control">
+                      <input type="checkbox" id="chkGrayscale" />
+                      <span class="toggle-slider"></span>
+                      <span class="setting-label">Grayscale conversion (B&W)</span>
+                    </label>
+                    <span class="setting-help">Extra 20-35% size drop for documents.</span>
+                  </div>
+
+                  <!-- Strip Metadata -->
+                  <div class="setting-row">
+                    <label class="toggle-control">
+                      <input type="checkbox" id="chkMetadata" checked />
+                      <span class="toggle-slider"></span>
+                      <span class="setting-label">Strip metadata & history</span>
+                    </label>
+                    <span class="setting-help">Removes author, software, and creation tags for privacy.</span>
+                  </div>
+
+                  <!-- Engine mode -->
+                  <div class="setting-row vertical">
+                    <span class="setting-label">Compression Strategy:</span>
+                    <select id="selEngine" class="select-styled">
+                      <option value="smart" selected>Smart Resampling & Stream Packing (Best Results)</option>
+                      <option value="lossless">Lossless Stream Optimization (Retain 100% Vector)</option>
+                    </select>
+                  </div>
+                </div>
+              </details>
+
+              <!-- Main Compress Action Button -->
+              <div class="sidebar-action-wrap">
+                <button id="btnExecuteCompress" class="btn-compress-action" type="button">
+                  <span>Compress PDF</span>
+                  <i data-lucide="arrow-right"></i>
+                </button>
+                <div class="action-subtext">Click on COMPRESS PDF to start</div>
+              </div>
+
+            </div>
+          </aside>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 3: PROCESSING SPINNER & STATUS SCREEN     -->
+      <!-- ============================================== -->
+      <section id="processingView" class="tool-view">
+        <div class="processing-card">
+          <div class="processing-visual">
+            <div class="pulse-ring"></div>
+            <div class="compressor-doc-icon">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <path d="M12 18v-6"></path>
+                <path d="m9 15 3 3 3-3"></path>
+              </svg>
+            </div>
+          </div>
+
+          <h3 id="processHeading" class="process-title">Compressing PDF...</h3>
+          <p id="processSubheading" class="process-subtitle">Reducing file size while optimizing visual quality...</p>
+
+          <!-- Progress Bar -->
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-track">
+              <div id="progressBarFill" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-metrics">
+              <span id="processStatusText" class="progress-status">Initializing optimization engine...</span>
+              <span id="processPercentText" class="progress-percent">0%</span>
+            </div>
+          </div>
+
+          <div class="processing-tip">
+            <i data-lucide="shield-alert"></i>
+            <span>All compression is happening locally inside your browser. Fast, private, and secure.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- VIEW 4: RESULTS & DOWNLOAD SCREEN              -->
+      <!-- ============================================== -->
+      <section id="resultsView" class="tool-view">
+        <div class="results-card">
+          
+          <div class="results-badge-celebration">
+            <div class="check-circle">
+              <i data-lucide="check"></i>
+            </div>
+            <h2 class="results-title">PDFs have been compressed!</h2>
+            <p class="results-subtitle">Your files are ready for immediate download.</p>
+          </div>
+
+          <!-- Big Savings Stat Banner -->
+          <div class="savings-banner">
+            <div class="savings-main-stat">
+              <span class="savings-lead">Your PDF is now</span>
+              <span id="savingsPercentDisplay" class="savings-highlight">75% smaller!</span>
+            </div>
+
+            <div class="size-comparison-row">
+              <div class="size-item old-size">
+                <span class="size-label">Original:</span>
+                <span id="resOriginalSize" class="size-val">3.40 MB</span>
+              </div>
+              <div class="size-arrow">
+                <i data-lucide="arrow-right"></i>
+              </div>
+              <div class="size-item new-size">
+                <span class="size-label">Compressed:</span>
+                <span id="resCompressedSize" class="size-val">850 KB</span>
+              </div>
+            </div>
+
+            <div class="savings-bar-visual">
+              <div class="bar-legend">
+                <span id="barSavedText">Saved: 2.55 MB</span>
+              </div>
+              <div class="bar-track">
+                <div id="barFillCompressed" class="bar-fill-compressed" style="width: 25%;"></div>
+                <div id="barFillSaved" class="bar-fill-saved" style="width: 75%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Download Action Buttons -->
+          <div class="results-actions-group">
+            <button id="btnDownloadCompressed" class="btn-download-primary">
+              <i data-lucide="download"></i>
+              <span id="downloadBtnText">Download compressed PDF</span>
+            </button>
+
+            <div class="results-secondary-actions">
+              <button id="btnPreviewResult" class="btn-secondary-action" title="Preview the compressed document">
+                <i data-lucide="eye"></i>
+                <span>Preview PDF</span>
+              </button>
+              <button id="btnCompressAnother" class="btn-secondary-action" title="Start over with new files">
+                <i data-lucide="rotate-ccw"></i>
+                <span>Compress another PDF</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- SECTION: HOW IT WORKS (iLovePDF Style Guide)    -->
+      <!-- ============================================== -->
+      <section id="how-it-works" class="info-section">
+        <div class="section-container">
+          <h2 class="section-title">How to compress PDF online with Borngreat</h2>
+          <p class="section-subtitle">Compress your PDF documents in 3 simple steps without installing any software.</p>
+
+          <div class="steps-grid">
+            <div class="step-card">
+              <div class="step-num">1</div>
+              <div class="step-icon">
+                <i data-lucide="upload-cloud"></i>
+              </div>
+              <h4 class="step-title">Upload your PDF</h4>
+              <p class="step-desc">Select your PDF from your device or simply drag and drop it into the upload box.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">2</div>
+              <div class="step-icon">
+                <i data-lucide="sliders-horizontal"></i>
+              </div>
+              <h4 class="step-title">Choose compression level</h4>
+              <p class="step-desc">Pick between Extreme, Recommended, or Less compression based on your quality needs.</p>
+            </div>
+
+            <div class="step-card">
+              <div class="step-num">3</div>
+              <div class="step-icon">
+                <i data-lucide="download"></i>
+              </div>
+              <h4 class="step-title">Download compressed file</h4>
+              <p class="step-desc">Your optimized PDF is generated instantly in memory. Download it with one click!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- SECTION: FEATURES / WHY CHOOSE BORNGREAT       -->
+      <!-- ============================================== -->
+      <section id="features" class="info-section bg-alt">
+        <div class="section-container">
+          <h2 class="section-title">Why choose Borngreat PDF Compressor?</h2>
+          <p class="section-subtitle">Engineered for lightning speed, unmatched privacy, and maximum file size reduction.</p>
+
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon red">
+                <i data-lucide="shield-check"></i>
+              </div>
+              <h4>100% In-Browser Privacy</h4>
+              <p>Unlike cloud converters that upload your confidential documents to unknown servers, Borngreat processes everything locally in your browser.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon blue">
+                <i data-lucide="zap"></i>
+              </div>
+              <h4>Instant Optimization</h4>
+              <p>Powered by modern WebAssembly and JavaScript vector engines. No waiting in server queues or uploading gigabytes of data.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon green">
+                <i data-lucide="pie-chart"></i>
+              </div>
+              <h4>Exceptional Compression</h4>
+              <p>Smart discrete cosine quantization and stream compaction drops file sizes by up to 90% while keeping text crisp and sharp.</p>
+            </div>
+
+            <div class="feature-card">
+              <div class="feature-icon purple">
+                <i data-lucide="infinity"></i>
+              </div>
+              <h4>Zero Limits, 100% Free</h4>
+              <p>No account required, no subscription paywalls, no watermarks, and no file quantity caps. Compress as many PDFs as you need.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================== -->
+      <!-- SECTION: FAQ ACCORDION                         -->
+      <!-- ============================================== -->
+      <section id="faq" class="info-section">
+        <div class="section-container">
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <p class="section-subtitle">Everything you need to know about Borngreat PDF Compressor.</p>
+
+          <div class="faq-accordion">
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Will compressing a PDF degrade its text quality?</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>No. Borngreat utilizes high-resolution rasterization and vector stream re-encoding. Standard typography and fonts maintain sharp, legible contours even at high compression ratios.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Are my files and documents safe?</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Absolutely. Borngreat operates 100% client-side inside your browser sandbox. Your PDF never leaves your device or touches any external server or cloud storage.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>How can I compress a PDF to under 500 KB or 1 MB?</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Open the "Advanced Optimization Options" panel and toggle "Target file size limit". Select "Under 500 KB" or type your exact limit in KB. The engine will dynamically compute the optimal compression parameters to match your limit.</p>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Can I compress multiple PDF documents simultaneously?</span>
+                <i data-lucide="chevron-down"></i>
+              </button>
+              <div class="faq-answer">
+                <p>Yes! Borngreat supports multi-file batch uploads. You can drop multiple PDFs together and compress them all with your selected profile.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- PDF Preview Modal -->
+    <div id="previewModal" class="modal-backdrop" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-title-wrap">
+            <i data-lucide="file-text"></i>
+            <h4 id="previewModalTitle">Document Preview</h4>
+          </div>
+          <button id="btnClosePreviewModal" class="btn-close-modal" type="button" title="Close Preview">
+            <i data-lucide="x"></i>
+          </button>
+        </div>
+        <div class="modal-body">
+          <iframe id="previewIframe" src="about:blank" class="preview-frame"></iframe>
+        </div>
+        <div class="modal-footer">
+          <span class="preview-badge">Compressed Document Preview</span>
+          <button id="btnDownloadFromModal" class="btn-download-sm">
+            <i data-lucide="download"></i>
+            <span>Download PDF</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <div class="footer-brand-row">
+          <div class="footer-brand">
+            <span class="brand-icon-sm">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+              </svg>
+            </span>
+            <span class="footer-name">Borngreat PDF Compressor</span>
+          </div>
+          <p class="footer-tagline">Same PDF quality, less file size. 100% Free & Secure.</p>
+        </div>
+
+        <div class="footer-links-row">
+          <div class="footer-col">
+            <h5>PDF Solutions</h5>
+            <ul>
+              <li><a href="#">Compress PDF</a></li>
+              <li><a href="#">Merge PDF (Coming soon)</a></li>
+              <li><a href="#">Split PDF (Coming soon)</a></li>
+              <li><a href="#">PDF to Word (Coming soon)</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Privacy & Security</h5>
+            <ul>
+              <li><a href="#features">Client-side Security</a></li>
+              <li><a href="#">No Cloud Storage</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Borngreat</h5>
+            <ul>
+              <li><a href="#">About Borngreat</a></li>
+              <li><a href="#how-it-works">How to Use</a></li>
+              <li><a href="#faq">FAQ</a></li>
+              <li><a href="#">Contact Support</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Borngreat PDF &reg; - Built with high-performance Web standards. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Main JavaScript Bundle -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
