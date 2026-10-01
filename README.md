@@ -8,7 +8,7 @@ Borngreat PDF Compressor allows users to upload any PDF document, customize the 
 
 ## 🌟 Key Features
 
-- **iLovePDF-Inspired UX**:
+- **Inspired UX**:
   - Central drag-and-drop upload zone with large, intuitive call-to-actions.
   - Multi-file batch support with real-time page count, size display, and visual thumbnails rendered via PDF.js.
   - Real-time compression progress tracker with stage updates ("Optimizing page X of Y", "Quantizing streams").
