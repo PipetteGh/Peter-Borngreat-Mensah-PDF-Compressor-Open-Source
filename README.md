@@ -1,8 +1,8 @@
 # Borngreat PDF Compressor 📄⚡
 
-> **Same PDF quality, less file size.** A modern, high-performance, client-side PDF compressor inspired by iLovePDF.
+> **Same PDF quality, less file size.** A modern, high-performance, client-side PDF compressor.
 
-Borngreat PDF Compressor allows users to upload any PDF document, customize the compression profile or target file size, and instantly produce an optimized, lightweight PDF directly within their browser without sending a single byte to an external server.
+Borngreat PDF Compressor developed by Peter Borngreat-Mensah allows users to upload any PDF document, customize the compression profile or target file size, and instantly produce an optimized, lightweight PDF directly within their browser without sending a single byte to an external server.
 
 ---
 
